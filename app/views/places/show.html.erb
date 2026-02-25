@@ -1,0 +1,27 @@
+<h1><%= @place["name"] %></h1>
+
+<p>
+  <a href="/places">Back to places</a>
+</p>
+
+<h2>Entries</h2>
+
+<p>
+  <a href="/entries/new/<%= @place["id"] %>">Add a new entry</a>
+</p>
+
+<% if @entries.any? %>
+  <ul>
+    <% @entries.each do |entry| %>
+      <li>
+        <strong><%= entry["title"] %></strong>
+        <% if entry["occurred_on"].present? %>
+          — <em><%= entry["occurred_on"] %></em>
+        <% end %>
+        <div><%= entry["description"] %></div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entries yet.</p>
+<% end %>
